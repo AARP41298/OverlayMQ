@@ -399,7 +399,7 @@ Provider=HAL
 ID=CPU clock
 [Source54]
 Name=GPU1 temperature
-Units=°C
+Units=ï¿½C
 Format=
 Formula=
 Provider=HAL
@@ -573,7 +573,7 @@ ReadingType=6
 ReadingName=Average Effective Clock
 [Source76]
 Name=CPU temperature
-Units=°C
+Units=ï¿½C
 Format=
 Formula=
 Provider=MSI Afterburner
@@ -582,14 +582,14 @@ Gpu=FFFFFFFF
 SrcName=
 [Source77]
 Name=CPU temperature
-Units=°C
+Units=ï¿½C
 Format=
 Formula=
 Provider=HAL
 ID=CPU temperature
 [Source78]
 Name=CPU temperature
-Units=°C
+Units=ï¿½C
 Format=
 Formula=
 Provider=HwInfo
@@ -598,7 +598,7 @@ ReadingType=1
 ReadingName=CPU (Tctl/Tdie)
 [Source79]
 Name=CPU temperature
-Units=°C
+Units=ï¿½C
 Format=
 Formula=
 Provider=HwInfo
@@ -2249,8 +2249,8 @@ TextColor=F0FF
 RefreshPeriod=1000
 MarginTop=3
 [Layer27]
-Name=GPU - Sensor - Temp (°C)
-Text=%GPU1 temperature% <S=142>°<S=106> C<S>
+Name=GPU - Sensor - Temp (ï¿½C)
+Text=%GPU1 temperature% <S=142>ï¿½<S=106> C<S>
 PositionX=-20
 PositionY=-4
 ExtentX=112
@@ -2348,11 +2348,12 @@ PositionX=0
 PositionY=-7
 ExtentX=209
 ExtentY=32
-ExtentOrigin=4
+ExtentOrigin=1
 FixedAlignment=1
-Size=80
+Size=70
 TextColor=F0FF
 MarginTop=3
+MarginRight=18
 [Layer36]
 Name=VRAM - Barchart - Usage (%)
 Text=<G=GPU1VramUsage,0,0,1,0,100,8>
@@ -2472,16 +2473,15 @@ TextColor=F0FF
 [Layer47]
 Name=CPU - Sensor - CPU Name
 Text=%CPU%
-PositionX=-4
+PositionX=0
 PositionY=-9
-ExtentX=209
-ExtentY=24
+ExtentX=-28
+ExtentY=-1
 ExtentOrigin=4
 FixedAlignment=1
 Size=135
 TextColor=F0FF
-MarginLeft=10
-MarginTop=4
+MarginLeft=15
 [Layer48]
 Name=CPU - Text - CPU
 Text=CPU
@@ -2520,8 +2520,8 @@ TextColor=F0FF
 RefreshPeriod=1000
 MarginTop=4
 [Layer51]
-Name=CPU - Sensor - Temp (°C)
-Text=%CPU temperature% <S=142>°<S=106> C<S>
+Name=CPU - Sensor - Temp (ï¿½C)
+Text=%CPU temperature% <S=142>ï¿½<S=106> C<S>
 PositionX=-12
 PositionY=-13
 ExtentX=112
