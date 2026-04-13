@@ -1,0 +1,2849 @@
+[Master]
+Implementation=2
+FontFace=Adderley Bold
+FontHeight=-32
+FontWeight=700
+ZoomRatio=1
+[Settings]
+Name=
+EnvVars=PM_DisplayDelay=3000
+RefreshPeriod=250
+LockUserSettings=1
+EmbeddedImage=TM_Benchmark_1080p_Sprite_Sheet_E_Blue.png
+PingAddr=127.0.0.1
+[General]
+Sources=249
+Tables=0
+Layers=81
+[Source0]
+Name=CPU Core Count Override
+Units=Cores
+Format=
+Formula=
+Provider=HAL
+ID=Stub
+[Source1]
+Name=Is4CoreLayout
+Units=
+Format=
+Formula=PhysicalCoreCount <= 4
+Provider=HAL
+ID=Stub
+[Source2]
+Name=Is6CoreLayout
+Units=
+Format=
+Formula=PhysicalCoreCount == 6
+Provider=HAL
+ID=Stub
+[Source3]
+Name=Is8CoreLayout
+Units=
+Format=
+Formula=PhysicalCoreCount == 8
+Provider=HAL
+ID=Stub
+[Source4]
+Name=Is10CoreLayout
+Units=
+Format=
+Formula=PhysicalCoreCount == 10
+Provider=HAL
+ID=Stub
+[Source5]
+Name=Is12CoreLayout
+Units=
+Format=
+Formula=PhysicalCoreCount == 12
+Provider=HAL
+ID=Stub
+[Source6]
+Name=Is14CoreLayout
+Units=
+Format=
+Formula=PhysicalCoreCount == 14
+Provider=HAL
+ID=Stub
+[Source7]
+Name=Is16CoreLayout
+Units=
+Format=
+Formula=PhysicalCoreCount == 16
+Provider=HAL
+ID=Stub
+[Source8]
+Name=Is20CoreLayout
+Units=
+Format=
+Formula=PhysicalCoreCount == 20
+Provider=HAL
+ID=Stub
+[Source9]
+Name=Is24CoreLayout
+Units=
+Format=
+Formula=PhysicalCoreCount >= 24
+Provider=HAL
+ID=Stub
+[Source10]
+Name=GpuRenderLatency
+Units=ms (PresentMon)
+Format=%.1f
+Formula=min(presentmonlatency(5,6), 999.9)
+Provider=HAL
+ID=Stub
+[Source11]
+Name=GpuRenderLatency
+Units=ms (Reflex)
+Format=%.1f
+Formula=min(reflexlatency(11,12), 999.9)
+Provider=HAL
+ID=Stub
+[Source12]
+Name=FramePipelineLatency
+Units=ms (PresentMon)
+Format=%.1f
+Formula=min(presentmonlatency(1,8), 999.9)
+Provider=HAL
+ID=Stub
+[Source13]
+Name=FramePipelineLatency
+Units=ms (Reflex)
+Format=%.1f
+Formula=min(reflexlatency(1,12), 999.9)
+Provider=HAL
+ID=Stub
+[Source14]
+Name=GPU1 fan speed
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=GPU1 fan speed
+[Source15]
+Name=IsIntelCpu
+Units=
+Format=
+Formula=cpuvendor == 0x8086
+Provider=HAL
+ID=Stub
+[Source16]
+Name=IsAMDCpu
+Units=
+Format=
+Formula=cpuvendor == 0x1022
+Provider=HAL
+ID=Stub
+[Source17]
+Name=HWiNFO64 Online
+Units=
+Format=
+Formula=(validate(AverageEffectiveClock) && AverageEffectiveClock > 0)
+Provider=HAL
+ID=Stub
+[Source18]
+Name=HWiNFO64 Offline
+Units=
+Format=
+Formula=!(validate(AverageEffectiveClock) && AverageEffectiveClock > 0)
+Provider=HAL
+ID=Stub
+[Source19]
+Name=isNvidiaGpu
+Units=
+Format=
+Formula=gpuvendor == 0x10DE
+Provider=HAL
+ID=Stub
+[Source20]
+Name=isAmdGpu
+Units=
+Format=
+Formula=gpuvendor == 0x1002
+Provider=HAL
+ID=Stub
+[Source21]
+Name=isIntelGpu
+Units=
+Format=
+Formula=gpuvendor == 0x8086
+Provider=HAL
+ID=Stub
+[Source22]
+Name=Fanimation
+Units=
+Format=
+Formula=( (x / 2000) % 10 )
+Provider=HAL
+ID=Timer
+[Source23]
+Name=Animation Timer 1
+Units=Fan Speed
+Format=
+Formula=((-"GPU1 fan speed" * x / 1250) % 10 + 10) % 10
+Provider=HAL
+ID=Timer
+[Source24]
+Name=Animation Timer 2
+Units=
+Format=
+Formula=(x / 33) % 24
+Provider=HAL
+ID=Timer
+[Source25]
+Name=Animation Timer 3
+Units=
+Format=
+Formula=(x / 15) % 24
+Provider=HAL
+ID=Timer
+[Source26]
+Name=Animation Timer 4
+Units=
+Format=
+Formula=(x / 66) % 14
+Provider=HAL
+ID=Timer
+[Source27]
+Name=Animation Timer 5
+Units=Fan Speed
+Format=
+Formula=(("GPU1 fan speed" * x / 1250) % 10 + 10) % 10
+Provider=HAL
+ID=Timer
+[Source28]
+Name=Animation Timer 6
+Units=
+Format=
+Formula=(x /300) % 9
+Provider=HAL
+ID=Timer
+[Source29]
+Name=Animation Timer 7
+Units=BLINKER
+Format=
+Formula=(x / 266) % 4
+Provider=HAL
+ID=Timer
+[Source30]
+Name=Blink Timer 1
+Units=
+Format=%0.2f
+Formula=(x%800)<200?0.85+((x%800)/200)*0.15:(x%800)<500?1:1-((x%800-500)/300)*0.15
+Provider=HAL
+ID=Timer
+[Source31]
+Name=Blink Timer 2
+Units=
+Format=%0.2f
+Formula=(x%800)<200?1-((x%800)/200)*0.15:(x%800)<500?0.85:0.85+((x%800-500)/300)*0.15
+Provider=HAL
+ID=Timer
+[Source32]
+Name=Timer 1
+Units=
+Format=%0.2f
+Formula=(x%1000)<300?(x%1000)/300:(x%1000)<500?1:(x%1000)<800?1-((x%1000-500)/300):0
+Provider=HAL
+ID=Timer
+[Source33]
+Name=Timer 2
+Units=
+Format=%0.2f
+Formula=1-((x%1000)<300?(x%1000)/300:(x%1000)<500?1:(x%1000)<800?1-((x%1000-500)/300):0)
+Provider=HAL
+ID=Timer
+[Source34]
+Name=GPUThrottle
+Units=
+Format=
+Formula=min(1,(validate(GPUThrottleNVIDIA)?GPUThrottleNVIDIA:0)+(validate(GPUThrottleAMD)?min(1,max(0,GPUThrottleAMD-98)):0)+(validate(GPUThrottleIntel)?GPUThrottleIntel:0))
+Provider=HAL
+ID=Stub
+[Source35]
+Name=CPUThrottle
+Units=
+Format=
+Formula=min(1,(validate(CPUThrottleIntel)?CPUThrottleIntel:0)+(validate(CPUThrottleAMD)?CPUThrottleAMD:0))
+Provider=HAL
+ID=Stub
+[Source36]
+Name=Benchmark0
+Units=
+Format=
+Formula=(rtssflags & 0x100) != 0
+Provider=HAL
+ID=Stub
+[Source37]
+Name=GPUTemp100Plus
+Units=
+Format=
+Formula=("GPU1 temperature" >= 100)
+Provider=HAL
+ID=Stub
+[Source38]
+Name=IsStuttering
+Units=
+Format=
+Formula=("Frametime" > FrametimeAvg12 * 2) || (FramegenON && msBetweenDisplayChange > FGFrametimeAvg12 * 2)
+Provider=HAL
+ID=Stub
+[Source39]
+Name=FGIsStuttering
+Units=
+Format=
+Formula="Frametime" > FrametimeAvg12 * 2
+Provider=HAL
+ID=Stub
+[Source40]
+Name=FrametimeLessThan10ms
+Units=
+Format=
+Formula=("Frametime" < 10.0) || (FramegenON && msBetweenDisplayChange < 10.0)
+Provider=HAL
+ID=Stub
+[Source41]
+Name=FrametimeAvg5
+Units=
+Format=
+Formula=swavg("Frametime", 5)
+Provider=HAL
+ID=Stub
+[Source42]
+Name=FrametimeAvg12
+Units=
+Format=
+Formula=swavg("Frametime", 12)
+Provider=HAL
+ID=Stub
+[Source43]
+Name=FGFrametimeAvg12
+Units=
+Format=
+Formula=swavg("msBetweenDisplayChange", 12)
+Provider=HAL
+ID=Stub
+[Source44]
+Name=FPS
+Units=
+Format=
+Formula=""Framerate""
+Provider=HAL
+ID=Stub
+[Source45]
+Name=AverageFPS
+Units=
+Format=
+Formula=""Framerate Avg""
+Provider=HAL
+ID=Stub
+[Source46]
+Name=fps1000Plus
+Units=
+Format=
+Formula=("FPS" >= 1000)
+Provider=HAL
+ID=Stub
+[Source47]
+Name=fps10Plus
+Units=
+Format=
+Formula=("FPS" >= 10)
+Provider=HAL
+ID=Stub
+[Source48]
+Name=CPU usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU usage
+[Source49]
+Name=CPUusage100
+Units=
+Format=
+Formula="CPU usage" ==100
+Provider=HAL
+ID=Stub
+[Source50]
+Name=CPU power
+Units=W
+Format=
+Formula=
+Provider=MSI Afterburner
+SrcId=00000100
+Gpu=FFFFFFFF
+SrcName=
+[Source51]
+Name=CPU power
+Units=W
+Format=
+Formula=
+Provider=HAL
+ID=CPU power
+[Source52]
+Name=CPU clock
+Units=GHz
+Format=%.2f
+Formula=x / 1000
+Provider=MSI Afterburner
+SrcId=000000A0
+Gpu=FFFFFFFF
+SrcName=
+[Source53]
+Name=CPU clock
+Units=GHz
+Format=%.2f
+Formula=x / 1000
+Provider=HAL
+ID=CPU clock
+[Source54]
+Name=GPU1 temperature
+Units=°C
+Format=
+Formula=
+Provider=HAL
+ID=GPU1 temperature
+[Source55]
+Name=GPU1 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=GPU1 usage
+[Source56]
+Name=GPUusage100
+Units=
+Format=
+Formula="GPU1 usage" == 100
+Provider=HAL
+ID=Stub
+[Source57]
+Name=GPU1 power
+Units=W
+Format=
+Formula=
+Provider=HAL
+ID=GPU1 power
+[Source58]
+Name=GPU1 power
+Units=W
+Format=
+Formula=
+Provider=MSI Afterburner
+SrcId=00000061
+Gpu=00000000
+SrcName=
+[Source59]
+Name=GPU1 power
+Units=W
+Format=
+Formula=
+Provider=HwInfo
+SensorInst=0
+ReadingType=5
+ReadingName=GPU Power
+[Source60]
+Name=GPU1 memory usage
+Units=MB
+Format=
+Formula=
+Provider=HAL
+ID=GPU1 memory usage
+[Source61]
+Name=GPU1 total memory
+Units=GB
+Format=%.0f
+Formula=x / 1024
+Provider=HAL
+ID=GPU1 total memory
+[Source62]
+Name=GPU1VramUsage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=GPU1 memory usage percent
+[Source63]
+Name=RAM usage percent
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=RAM usage percent
+[Source64]
+Name=RAM usage GB
+Units=GB
+Format=%.2f
+Formula=x / 1024
+Provider=HAL
+ID=RAM usage
+[Source65]
+Name=RAM usage
+Units=MB
+Format=
+Formula=
+Provider=HAL
+ID=RAM usage
+[Source66]
+Name=Total RAM
+Units=
+Format=%.0f
+Formula=x / 1024
+Provider=HAL
+ID=Total RAM
+[Source67]
+Name=GPUThrottleNVIDIA
+Units=
+Format=
+Formula=validate(x) ? x : 0
+Provider=HwInfo
+SensorInst=0
+ReadingType=8
+ReadingName=Performance Limit - Thermal
+[Source68]
+Name=GPUThrottleAMD
+Units=
+Format=
+Formula=validate(x) ? x : 0
+Provider=HwInfo
+SensorInst=0
+ReadingType=8
+ReadingName=GPU VR GFX Thermal Limit
+[Source69]
+Name=GPUThrottleIntel
+Units=
+Format=
+Formula=validate(x) ? x : 0
+Provider=HwInfo
+SensorInst=0
+ReadingType=8
+ReadingName=Hardware Limit
+[Source70]
+Name=CPUThrottleIntel
+Units=
+Format=
+Formula=validate(x) ? x : 0
+Provider=HwInfo
+SensorInst=0
+ReadingType=8
+ReadingName=Package/Ring Thermal Throttling
+[Source71]
+Name=CPUThrottleAMD
+Units=
+Format=
+Formula=validate(x) ? x : 0
+Provider=HwInfo
+SensorInst=0
+ReadingType=8
+ReadingName=Thermal Throttling (PROCHOT EXT)
+[Source72]
+Name=GPU1 clock
+Units=MHz
+Format=%.0f
+Formula=
+Provider=HAL
+ID=GPU1 clock
+[Source73]
+Name=GPU1 clock
+Units=MHz
+Format=
+Formula=
+Provider=MSI Afterburner
+SrcId=00000020
+Gpu=00000000
+SrcName=
+[Source74]
+Name=GPU1 clock
+Units=MHz
+Format=
+Formula=
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=GPU Effective Clock
+[Source75]
+Name=AverageEffectiveClock
+Units=MHz
+Format=%.0f
+Formula=validate(x) ? x : 0
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Average Effective Clock
+[Source76]
+Name=CPU temperature
+Units=°C
+Format=
+Formula=
+Provider=MSI Afterburner
+SrcId=00000080
+Gpu=FFFFFFFF
+SrcName=
+[Source77]
+Name=CPU temperature
+Units=°C
+Format=
+Formula=
+Provider=HAL
+ID=CPU temperature
+[Source78]
+Name=CPU temperature
+Units=°C
+Format=
+Formula=
+Provider=HwInfo
+SensorInst=0
+ReadingType=1
+ReadingName=CPU (Tctl/Tdie)
+[Source79]
+Name=CPU temperature
+Units=°C
+Format=
+Formula=
+Provider=HwInfo
+SensorInst=0
+ReadingType=1
+ReadingName=Core Max
+[Source80]
+Name=GPU1 total memory
+Units=MB
+Format=
+Formula=
+Provider=HAL
+ID=GPU1 total memory
+[Source81]
+Name=FramegenON
+Units=
+Format=
+Formula="PresentMode" ==3
+Provider=HAL
+ID=Stub
+[Source82]
+Name=msBetweenPresents
+Units=ms
+Format=%.1f
+Formula=
+Provider=PresentMon
+ID=msBetweenPresents
+[Source83]
+Name=msBetweenDisplayChange
+Units=ms
+Format=%.1f
+Formula=min(x,999.9)
+Provider=PresentMon
+ID=msBetweenDisplayChange
+[Source84]
+Name=msGpuActive
+Units=ms
+Format=%.1f
+Formula=
+Provider=PresentMon
+ID=msGpuActive
+[Source85]
+Name=FrameratePresented
+Units=FPS
+Format=
+Formula=
+Provider=PresentMon
+ID=FrameratePresented
+[Source86]
+Name=FramerateDisplayed
+Units=FPS
+Format=
+Formula=
+Provider=PresentMon
+ID=FramerateDisplayed
+[Source87]
+Name=PresentMode
+Units=
+Format=
+Formula=
+Provider=PresentMon
+ID=PresentMode
+[Source88]
+Name=Status
+Units=
+Format=
+Formula=
+Provider=PresentMon
+ID=Status
+[Source89]
+Name=IsPresentMonDataAvailable
+Units=
+Format=
+Formula=validate(x)
+Provider=PresentMon
+ID=msBetweenPresents
+[Source90]
+Name=FrameratePresented1Dot0PLow
+Units=FPS
+Format=
+Formula=1000/percentile(msBetweenPresents,99)
+Provider=HAL
+ID=Stub
+[Source91]
+Name=FrameratePresented0Dot1PLow
+Units=FPS
+Format=
+Formula=1000/percentile(msBetweenPresents,99.9)
+Provider=HAL
+ID=Stub
+[Source92]
+Name=FramerateDisplayed1Dot0PLow
+Units=FPS
+Format=
+Formula=1000/percentile(msBetweenDisplayChange,99)
+Provider=HAL
+ID=Stub
+[Source93]
+Name=FramerateDisplayed0Dot1PLow
+Units=FPS
+Format=
+Formula=1000/percentile(msBetweenDisplayChange,99.9)
+Provider=HAL
+ID=Stub
+[Source94]
+Name=msBetweenPresentsMax
+Units=ms
+Format=%.1f
+Formula=swmax(msBetweenPresents,4)
+Provider=HAL
+ID=Stub
+[Source95]
+Name=msGpuActiveMax
+Units=ms
+Format=%.1f
+Formula=swmax(msGpuActive,4)
+Provider=HAL
+ID=Stub
+[Source96]
+Name=SimToDisplayLatency
+Units=ms
+Format=%.1f
+Formula=(x > 0) ? x : buf(x,-1)
+Provider=PresentMon
+ID=DisplayLatency
+[Source97]
+Name=PresentMonGpuRenderLatency
+Units=ms
+Format=%.1f
+Formula=presentmonlatency(5,6)
+Provider=HAL
+ID=Stub
+[Source98]
+Name=IsPresentMonLatencyAvailable
+Units=
+Format=
+Formula=validate(SimToDisplayLatency)
+Provider=HAL
+ID=Stub
+[Source99]
+Name=IsReflexLatencyAvailable
+Units=
+Format=
+Formula=validate(reflexlatency(11,12))
+Provider=HAL
+ID=Stub
+[Source100]
+Name=Barchart Bg
+Units=
+Format=
+Formula=1
+Provider=HAL
+ID=Stub
+[Source101]
+Name=ShowCpuBarchartInfoMessage
+Units=
+Format=
+Formula=if((!(validate(AverageEffectiveClock) && AverageEffectiveClock > 0)) && !validate("CPU Core Count Override"),1,0)
+Provider=HAL
+ID=Stub
+[Source102]
+Name=CPU1 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU1 usage
+[Source103]
+Name=CPU2 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU2 usage
+[Source104]
+Name=CPU3 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU3 usage
+[Source105]
+Name=CPU4 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU4 usage
+[Source106]
+Name=CPU5 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU5 usage
+[Source107]
+Name=CPU6 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU6 usage
+[Source108]
+Name=CPU7 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU7 usage
+[Source109]
+Name=CPU8 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU8 usage
+[Source110]
+Name=CPU9 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU9 usage
+[Source111]
+Name=CPU10 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU10 usage
+[Source112]
+Name=CPU11 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU11 usage
+[Source113]
+Name=CPU12 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU12 usage
+[Source114]
+Name=CPU13 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU13 usage
+[Source115]
+Name=CPU14 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU14 usage
+[Source116]
+Name=CPU15 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU15 usage
+[Source117]
+Name=CPU16 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU16 usage
+[Source118]
+Name=CPU17 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU17 usage
+[Source119]
+Name=CPU18 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU18 usage
+[Source120]
+Name=CPU19 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU19 usage
+[Source121]
+Name=CPU20 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU20 usage
+[Source122]
+Name=CPU21 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU21 usage
+[Source123]
+Name=CPU22 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU22 usage
+[Source124]
+Name=CPU23 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU23 usage
+[Source125]
+Name=CPU24 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU24 usage
+[Source126]
+Name=CPU25 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU25 usage
+[Source127]
+Name=CPU26 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU26 usage
+[Source128]
+Name=CPU27 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU27 usage
+[Source129]
+Name=CPU28 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU28 usage
+[Source130]
+Name=CPU29 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU29 usage
+[Source131]
+Name=CPU30 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU30 usage
+[Source132]
+Name=CPU31 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU31 usage
+[Source133]
+Name=CPU32 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU32 usage
+[Source134]
+Name=CPU33 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU33 usage
+[Source135]
+Name=CPU34 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU34 usage
+[Source136]
+Name=CPU35 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU35 usage
+[Source137]
+Name=CPU36 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU36 usage
+[Source138]
+Name=CPU37 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU37 usage
+[Source139]
+Name=CPU38 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU38 usage
+[Source140]
+Name=CPU39 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU39 usage
+[Source141]
+Name=CPU40 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU40 usage
+[Source142]
+Name=CPU41 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU41 usage
+[Source143]
+Name=CPU42 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU42 usage
+[Source144]
+Name=CPU43 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU43 usage
+[Source145]
+Name=CPU44 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU44 usage
+[Source146]
+Name=CPU45 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU45 usage
+[Source147]
+Name=CPU46 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU46 usage
+[Source148]
+Name=CPU47 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU47  usage
+[Source149]
+Name=CPU48 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU48 usage
+[Source150]
+Name=CPU49 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU49 usage
+[Source151]
+Name=CPU50 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU50 usage
+[Source152]
+Name=CPU51 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU51 usage
+[Source153]
+Name=CPU52 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU52 usage
+[Source154]
+Name=CPU53 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU53 usage
+[Source155]
+Name=CPU54 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU54 usage
+[Source156]
+Name=CPU55 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU55 usage
+[Source157]
+Name=CPU56 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU56 usage
+[Source158]
+Name=CPU57 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU57 usage
+[Source159]
+Name=CPU58 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU58 usage
+[Source160]
+Name=CPU59 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU59 usage
+[Source161]
+Name=CPU60 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU60 usage
+[Source162]
+Name=CPU61 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU61 usage
+[Source163]
+Name=CPU62 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU62 usage
+[Source164]
+Name=CPU63 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU63 usage
+[Source165]
+Name=CPU64 usage
+Units=%
+Format=
+Formula=
+Provider=HAL
+ID=CPU64 usage
+[Source166]
+Name=C0
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 0 T0 Effective Clock
+[Source167]
+Name=C1
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 1 T0 Effective Clock
+[Source168]
+Name=C2
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 2 T0 Effective Clock
+[Source169]
+Name=C3
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 3 T0 Effective Clock
+[Source170]
+Name=C4
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 4 T0 Effective Clock
+[Source171]
+Name=C5
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 5 T0 Effective Clock
+[Source172]
+Name=C6
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 6 T0 Effective Clock
+[Source173]
+Name=C7
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 7 T0 Effective Clock
+[Source174]
+Name=C8
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 8 T0 Effective Clock
+[Source175]
+Name=C9
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 9 T0 Effective Clock
+[Source176]
+Name=C10
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 10 T0 Effective Clock
+[Source177]
+Name=C11
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 11 T0 Effective Clock
+[Source178]
+Name=C12
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 12 T0 Effective Clock
+[Source179]
+Name=C13
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 13 T0 Effective Clock
+[Source180]
+Name=C14
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 14 T0 Effective Clock
+[Source181]
+Name=C15
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 15 T0 Effective Clock
+[Source182]
+Name=C16
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 16 T0 Effective Clock
+[Source183]
+Name=C17
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 17 T0 Effective Clock
+[Source184]
+Name=C18
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 18 T0 Effective Clock
+[Source185]
+Name=C19
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 19 T0 Effective Clock
+[Source186]
+Name=C20
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 20 T0 Effective Clock
+[Source187]
+Name=C21
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 21 T0 Effective Clock
+[Source188]
+Name=C22
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 22 T0 Effective Clock
+[Source189]
+Name=C23
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 23 T0 Effective Clock
+[Source190]
+Name=C24
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 24 T0 Effective Clock
+[Source191]
+Name=C25
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 25 T0 Effective Clock
+[Source192]
+Name=C26
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 26 T0 Effective Clock
+[Source193]
+Name=C27
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 27 T0 Effective Clock
+[Source194]
+Name=C28
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 28 T0 Effective Clock
+[Source195]
+Name=C29
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 29 T0 Effective Clock
+[Source196]
+Name=C30
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 30 T0 Effective Clock
+[Source197]
+Name=C31
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=Core 31 T0 Effective Clock
+[Source198]
+Name=P0
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 0 T0 Effective Clock
+[Source199]
+Name=P1
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 1 T0 Effective Clock
+[Source200]
+Name=P2
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 2 T0 Effective Clock
+[Source201]
+Name=P3
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 3 T0 Effective Clock
+[Source202]
+Name=P4
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 4 T0 Effective Clock
+[Source203]
+Name=P5
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 5 T0 Effective Clock
+[Source204]
+Name=P6
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 6 T0 Effective Clock
+[Source205]
+Name=P7
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 7 T0 Effective Clock
+[Source206]
+Name=P8
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 8 T0 Effective Clock
+[Source207]
+Name=P9
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 9 T0 Effective Clock
+[Source208]
+Name=P10
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 10 T0 Effective Clock
+[Source209]
+Name=P11
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 11 T0 Effective Clock
+[Source210]
+Name=P12
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 12 T0 Effective Clock
+[Source211]
+Name=P13
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 13 T0 Effective Clock
+[Source212]
+Name=P14
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 14 T0 Effective Clock
+[Source213]
+Name=P15
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 15 T0 Effective Clock
+[Source214]
+Name=P16
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 16 T0 Effective Clock
+[Source215]
+Name=P17
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 17 T0 Effective Clock
+[Source216]
+Name=P18
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 18 T0 Effective Clock
+[Source217]
+Name=P19
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 19 T0 Effective Clock
+[Source218]
+Name=P20
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 20 T0 Effective Clock
+[Source219]
+Name=P21
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 21 T0 Effective Clock
+[Source220]
+Name=P22
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 22 T0 Effective Clock
+[Source221]
+Name=P23
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=P-core 23 T0 Effective Clock
+[Source222]
+Name=E0
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 0 T0 Effective Clock
+[Source223]
+Name=E1
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 1 T0 Effective Clock
+[Source224]
+Name=E2
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 2 T0 Effective Clock
+[Source225]
+Name=E3
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 3 T0 Effective Clock
+[Source226]
+Name=E4
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 4 T0 Effective Clock
+[Source227]
+Name=E5
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 5 T0 Effective Clock
+[Source228]
+Name=E6
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 6 T0 Effective Clock
+[Source229]
+Name=E7
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 7 T0 Effective Clock
+[Source230]
+Name=E8
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 8 T0 Effective Clock
+[Source231]
+Name=E9
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 9 T0 Effective Clock
+[Source232]
+Name=E10
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 10 T0 Effective Clock
+[Source233]
+Name=E11
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 11 T0 Effective Clock
+[Source234]
+Name=E12
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 12 T0 Effective Clock
+[Source235]
+Name=E13
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 13 T0 Effective Clock
+[Source236]
+Name=E14
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 14 T0 Effective Clock
+[Source237]
+Name=E15
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 15 T0 Effective Clock
+[Source238]
+Name=E16
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 16 T0 Effective Clock
+[Source239]
+Name=E17
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 17 T0 Effective Clock
+[Source240]
+Name=E18
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 18 T0 Effective Clock
+[Source241]
+Name=E19
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 19 T0 Effective Clock
+[Source242]
+Name=E20
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 20 T0 Effective Clock
+[Source243]
+Name=E21
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 21 T0 Effective Clock
+[Source244]
+Name=E22
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 22 T0 Effective Clock
+[Source245]
+Name=E23
+Units=
+Format=
+Formula=if(validate(x),1,0)
+Provider=HwInfo
+SensorInst=0
+ReadingType=6
+ReadingName=E-core 23 T0 Effective Clock
+[Source246]
+Name=PhysicalCoreCount
+Units=Cores
+Format=
+Formula=if(validate("CPU Core Count Override"),"CPU Core Count Override",(C0+C1+C2+C3+C4+C5+C6+C7+C8+C9+C10+C11+C12+C13+C14+C15+C16+C17+C18+C19+C20+C21+C22+C23+C24+C25+C26+C27+C28+C29+C30+C31+P0+P1+P2+P3+P4+P5+P6+P7+P8+P9+P10+P11+P12+P13+P14+P15+P16+P17+P18+P19+P20+P21+P22+P23+E0+E1+E2+E3+E4+E5+E6+E7+E8+E9+E10+E11+E12+E13+E14+E15+E16+E17+E18+E19+E20+E21+E22+E23))
+Provider=HAL
+ID=Stub
+[Source247]
+Name=GPU1 memory usage \ process
+Units=MB
+Format=
+Formula=
+Provider=HAL
+ID=GPU1 memory usage \ process
+[Source248]
+Name=GPU2 memory usage \ process
+Units=MB
+Format=
+Formula=
+Provider=HAL
+ID=GPU2 memory usage \ process
+[Layer0]
+Name=FPS - Element - Divider Top
+Text=<I=0,0,0,512,128,64>
+PositionX=104
+PositionY=163
+ExtentX=2
+ExtentY=2
+ExtentOrigin=0
+Size=1
+TextColor=F0FF
+[Layer1]
+Name=FPS - Element - Divider Bar
+Text=<B=0,0>
+PositionX=104
+PositionY=165
+ExtentX=2
+ExtentY=56
+ExtentOrigin=0
+Size=1
+TextColor=F0FF
+[Layer2]
+Name=FPS - Element - Divider Bottom
+Text=<I=0,0,0,576,128,64>
+PositionX=104
+PositionY=221
+ExtentX=2
+ExtentY=2
+ExtentOrigin=0
+Size=1
+TextColor=F0FF
+[Layer3]
+Name=FPS - Text - LOW (1%)
+Text=LOW
+PositionX=0
+PositionY=-5
+ExtentX=103
+ExtentY=37
+ExtentOrigin=4
+Size=95
+TextColor=F0FF
+MarginLeft=2
+MarginTop=3
+[Layer4]
+Name=FPS - Text - AVG
+Text=AV<S=15> <S=95>G<S>
+PositionX=106
+PositionY=196
+ExtentX=103
+ExtentY=37
+ExtentOrigin=4
+Size=95
+TextColor=F0FF
+MarginLeft=2
+MarginTop=3
+[Layer5]
+Name=FPS - Text - FPS
+Text=F<S=15> <S=106>P<S=15> <S=106>S
+PositionX=138
+PositionY=77
+ExtentX=71
+ExtentY=8
+ExtentOrigin=4
+Size=106
+TextColor=FF0080
+MarginLeft=2
+MarginTop=4
+[Layer6]
+Name=FPS - Sensor - 1% LOW FPS
+Text=<IF !FramegenON><FR10L><ELSE>%FramerateDisplayed1Dot0PLow%
+PositionX=4
+PositionY=147
+ExtentX=99
+ExtentY=58
+ExtentOrigin=4
+Size=148
+TextColor=F0FF
+MarginTop=6
+[Layer7]
+Name=FPS - Sensor - Avg FPS
+Text=<FRAVG>
+PositionX=106
+PositionY=147
+ExtentX=101
+ExtentY=58
+ExtentOrigin=4
+Size=148
+TextColor=F0FF
+MarginLeft=4
+MarginTop=6
+[Layer8]
+Name=FPS - Sensor - Current FPS (<10)
+Text=<IF fps10Plus><ELSE><FR><IF>
+PositionX=0
+PositionY=68
+ExtentX=123
+ExtentY=37
+ExtentOrigin=5
+Size=277
+TextColor=F0FF
+MarginBottom=4
+[Layer9]
+Name=FPS - Sensor - Current FPS
+VisibilitySource=fps10Plus
+Text=<IF Fps1000Plus><FR><ELSE><FR><C=01000000><B=10,10>
+PositionX=0
+PositionY=68
+ExtentX=152
+ExtentY=108
+ExtentOrigin=5
+Size=277
+TextColor=FF0080
+MarginBottom=4
+[Layer10]
+Name=FPS - Animation - FrameGen Indicator Icon
+Text=<IF FramegenON><I=0,0,640,512,64,64,180><ELSE><IF>
+PositionX=197
+PositionY=86
+ExtentX=7
+ExtentY=6
+ExtentOrigin=4
+FixedAlignment=1
+Size=10
+TextColor=4100F0FF,0,1,9900F0FF,1,(Timer 1,1)
+[Layer11]
+Name=GPU - Sensor - Thermal Throttle - CHECK COOLING
+Text=<IF GPUThrottle>C<S=49>  <S=81>H<S=49>  <S=81>E<S=49>  <S=81>C<S=49>  <S=81>K   <S=30> <S=81>C<S=49>  <S=81>O<S=49>  <S=81>O<S=49>  <S=81>L<S=49>  <S=81>I<S=49>  <S=81>N<S=49>  <S=81>G<S><ELSE><IF>
+PositionX=0
+PositionY=0
+ExtentX=209
+ExtentY=65
+ExtentOrigin=4
+Size=81
+TextColor=8100F0FF
+MarginLeft=2
+MarginTop=36
+[Layer12]
+Name=GPU - Sensor - Thermal Throttle
+Text=<IF GPUThrottle>G<S=25> <S=108>P<S=25> <S=108>U<S=25> <S=108> <S=35> <S=105> <S=35> <S=105>T<S=35> <S=105>H<S=35> <S=105>R<S=35> <S=105>O<S=35> <S=105>T<S=35> <S=105>T<S=35> <S=105>L<S=35> <S=105>E<S><ELSE><IF>
+PositionX=0
+PositionY=0
+ExtentX=209
+ExtentY=64
+ExtentOrigin=4
+Size=108
+TextColor=1000000,0,1,F55F71,1,(Blink Timer 1,1)
+MarginLeft=12
+MarginBottom=14
+[Layer13]
+Name=GPU - Animation - Fire Icon - Temp
+Text=<AI=Animation Timer 2,0,0,0,24,640,1024,64,64,24,6,0,0,0>
+PositionX=335
+PositionY=155
+ExtentX=29
+ExtentY=34
+ExtentOrigin=0
+Size=10
+TextColor=1000000,,83,FFFFFF,83,(GPU1 temperature,0)
+[Layer14]
+Name=GPU - Animation - Fire Icon (>99%)
+Text=<AI=Animation Timer 2,0,0,0,24,640,1024,64,64,24,6,0,0,0>
+PositionX=221
+PositionY=74
+ExtentX=36
+ExtentY=39
+ExtentOrigin=0
+Size=50
+TextColor=1000000,,99,FFFFFF,99,(GPU1 usage,0)
+[Layer15]
+Name=GPU - Icon - Usage Ring - Body
+Text=<I=0,0,0,320,64,64>
+PositionX=224
+PositionY=83
+ExtentX=30
+ExtentY=30
+ExtentOrigin=0
+Size=50
+TextColor=3A00F0FF,,99,1000000,99,(GPU1 usage,0)
+[Layer16]
+Name=GPU - Icon - Usage Ring - Fill
+Text=<AI=GPU1 usage,0,0,0,100,0,0,64,64,41,8,0,0,0>
+PositionX=224
+PositionY=83
+ExtentX=30
+ExtentY=30
+ExtentOrigin=0
+Size=50
+TextColor=F0FF,,99,1000000,99,(GPU1 usage,0)
+[Layer17]
+Name=GPU - Icon - Power Bolt
+Text=<I=0,0,512,384,128,128>
+PositionX=223
+PositionY=121
+ExtentX=32
+ExtentY=32
+ExtentOrigin=4
+FixedAlignment=1
+Size=20
+TextColor=F0FF
+[Layer18]
+Name=GPU - Icon - Temp - Body
+Text=<I=0,0,736,896,32,64>
+PositionX=231
+PositionY=160
+ExtentX=15
+ExtentY=30
+ExtentOrigin=4
+FixedAlignment=1
+Size=50
+TextColor=3A00F0FF
+[Layer19]
+Name=GPU - Icon - Temp - Fill
+Text=<AI=GPU1 temperature,0,0,0,100,512,768,32,64,40,16,0,0,0>
+PositionX=231
+PositionY=160
+ExtentX=15
+ExtentY=30
+ExtentOrigin=0
+FixedAlignment=1
+Size=50
+TextColor=F0FF
+[Layer20]
+Name=GPU - Icon - Speed Gauge - Body
+Text=<I=0,0,576,320,64,64>
+PositionX=224
+PositionY=204
+ExtentX=30
+ExtentY=30
+ExtentOrigin=0
+Size=10
+TextColor=3A00F0FF
+[Layer21]
+Name=GPU - Icon - Speed Gauge - Needle
+Text=<AI=GPU1 clock,0,0,0,3000,768,512,64,64,1,1,0,-112,112>
+PositionX=224
+PositionY=204
+ExtentX=30
+ExtentY=30
+ExtentOrigin=4
+Size=50
+TextColor=F0FF
+[Layer22]
+Name=GPU - Icon - Speed Gauge - Fill
+Text=<AI=GPU1 clock,0,0,0,3000,512,0,64,64,41,8,0,0,0>
+PositionX=224
+PositionY=204
+ExtentX=30
+ExtentY=30
+ExtentOrigin=0
+Size=50
+TextColor=F0FF
+[Layer23]
+Name=GPU - Sensor - GPU Name
+Text=<IF GPUThrottle><ELSE>%GPU%<IF>
+PositionX=0
+PositionY=0
+ExtentX=-16
+ExtentY=-1
+ExtentOrigin=4
+FixedAlignment=1
+Size=162
+TextColor=F0FF
+MarginLeft=8
+MarginTop=5
+[Layer24]
+Name=GPU - Text - GPU
+Text=GPU
+PositionX=262
+PositionY=77
+ExtentX=112
+ExtentY=14
+ExtentOrigin=3
+FixedAlignment=1
+Size=106
+TextColor=F0FF
+MarginTop=4
+[Layer25]
+Name=GPU - Sensor - GPU1 Usage (%)
+Text=%GPU1 usage%<S=37> <S=-100>%<S>
+PositionX=301
+PositionY=77
+ExtentX=73
+ExtentY=40
+ExtentOrigin=4
+FixedAlignment=1
+Size=106
+TextColor=F0FF
+MarginTop=4
+MarginRight=1
+[Layer26]
+Name=GPU - Sensor - Power (W)
+Text=%GPU1 power% W
+PositionX=262
+PositionY=116
+ExtentX=112
+ExtentY=25
+ExtentOrigin=3
+Size=106
+TextColor=F0FF
+RefreshPeriod=1000
+MarginTop=3
+[Layer27]
+Name=GPU - Sensor - Temp (°C)
+Text=%GPU1 temperature% <S=142>°<S=106> C<S>
+PositionX=-20
+PositionY=-4
+ExtentX=112
+ExtentY=53
+ExtentOrigin=3
+Size=106
+TextColor=F0FF
+MarginBottom=1
+[Layer28]
+Name=GPU - Sensor - Clock (MHz)
+Text=%GPU1 clock%  <S=-80>MHZ<S>
+PositionX=262
+PositionY=194
+ExtentX=112
+ExtentY=40
+ExtentOrigin=3
+Size=106
+TextColor=F0FF
+MarginTop=4
+[Layer29]
+Name=FT - Frametime Graph Line (Primary)
+Text=<IF !FramegenON><G=Frametime,0,0,1,0,50,0><ELSE><G=msBetweenDisplayChange,0,0,1,0,50,0>
+PositionX=0
+PositionY=-7
+ExtentX=192
+ExtentY=36
+ExtentOrigin=4
+FixedAlignment=1
+Size=10
+TextColor=F0FF
+[Layer30]
+Name=FT - Frametime Graph Stutter Line (Red)
+VisibilitySource=IsStuttering
+Text=<IF !FramegenON><G=Frametime,0,0,1,0,50,0><ELSE>
+PositionX=0
+PositionY=-7
+ExtentX=192
+ExtentY=36
+ExtentOrigin=4
+FixedAlignment=1
+Size=10
+TextColor=DBFE2837
+[Layer31]
+Name=FT - Frametime Spike Indicator (White)
+Text=<IF !FramegenON><G=Frametime,0,0,1,0,1,1><ELSE><G=msBetweenDisplayChange,0,0,1,0,1,1>
+PositionX=0
+PositionY=-7
+ExtentX=192
+ExtentY=50
+ExtentOrigin=4
+FixedAlignment=1
+Size=10
+TextColor=1000000,,66.66,FFFFFF,66.66,(Frametime,0)
+[Layer32]
+Name=FT - Text - FRAMETIME
+Text=F<S=55> <S=106>R<S=55> <S=106>A<S=55> <S=106>M<S=55> <S=106>E<S=55> <S=106>T<S=55> <S=106>I<S=55> <S=106>M<S=55> <S=106>E<S>
+PositionX=0
+PositionY=-6
+ExtentX=209
+ExtentY=40
+ExtentOrigin=4
+FixedAlignment=1
+Size=106
+TextColor=F0FF
+MarginLeft=3
+MarginTop=4
+[Layer33]
+Name=FT - Element - Pill Shape - Center Fill
+Text=<B=52,25,R30>
+PositionX=-5
+PositionY=-7
+ExtentX=55
+ExtentY=29
+ExtentOrigin=4
+FixedAlignment=1
+Size=10
+TextColor=DB000000
+MarginLeft=1
+MarginTop=1
+[Layer34]
+Name=FT - Element - Pill Shape - Border
+Text=<I=0,0,320,768,64,32>
+PositionX=-5
+PositionY=-7
+ExtentX=64
+ExtentY=32
+ExtentOrigin=4
+FixedAlignment=1
+Size=20
+TextColor=F0FF
+[Layer35]
+Name=FT - Sensor - Frametime (ms)
+Text=<IF !FramegenON><FT><ELSE>%msBetweenDisplayChange%
+PositionX=0
+PositionY=-7
+ExtentX=209
+ExtentY=32
+ExtentOrigin=4
+FixedAlignment=1
+Size=80
+TextColor=F0FF
+MarginTop=3
+[Layer36]
+Name=VRAM - Barchart - Usage (%)
+Text=<G=GPU1VramUsage,0,0,1,0,100,8>
+PositionX=232
+PositionY=290
+ExtentX=126
+ExtentY=10
+ExtentOrigin=4
+Size=20
+TextColor=F0FF,0,94,F55F71,94,100(RAM usage percent,0)
+BgndColor=2500F0FF
+BorderColor=B00F0FF
+BorderSize=-1
+[Layer37]
+Name=CPU - Animation - Fire Icon (>99%)
+Text=<AI=Animation Timer 2,0,0,0,24,640,1024,64,64,24,6,0,0,0>
+PositionX=-9
+PositionY=-11
+ExtentX=36
+ExtentY=39
+ExtentOrigin=0
+Size=50
+TextColor=1000000,,99,FFFFFF,99,(CPU usage,0)
+[Layer38]
+Name=CPU - Animation - Fire Icon - Temp
+Text=<AI=Animation Timer 2,0,0,0,24,640,1024,64,64,24,6,0,0,0>
+PositionX=-17
+PositionY=-13
+ExtentX=29
+ExtentY=34
+ExtentOrigin=0
+Size=10
+TextColor=1000000,,83,FFFFFF,83,(CPU temperature,0)
+[Layer39]
+Name=CPU - Icon - Usage Ring - Body
+Text=<I=0,0,0,320,64,64>
+PositionX=-9
+PositionY=-11
+ExtentX=30
+ExtentY=30
+ExtentOrigin=0
+Size=50
+TextColor=3A00F0FF,,99,1000000,99,(CPU usage,0)
+[Layer40]
+Name=CPU - Icon - Usage Ring - Fill
+Text=<AI=CPU usage,0,0,0,100,0,0,64,64,41,8,0,0,0>
+PositionX=-9
+PositionY=-11
+ExtentX=30
+ExtentY=30
+ExtentOrigin=0
+Size=50
+TextColor=F0FF,,99,1000000,99,(CPU usage,0)
+[Layer41]
+Name=CPU - Icon - Power Bolt
+Text=<I=0,0,512,384,128,128>
+PositionX=-9
+PositionY=-12
+ExtentX=32
+ExtentY=32
+ExtentOrigin=4
+FixedAlignment=1
+Size=20
+TextColor=F0FF
+[Layer42]
+Name=CPU - Icon - Temp - Body
+Text=<I=0,0,736,896,32,64>
+PositionX=-9
+PositionY=-13
+ExtentX=15
+ExtentY=30
+ExtentOrigin=4
+FixedAlignment=1
+Size=50
+TextColor=3A00F0FF
+[Layer43]
+Name=CPU - Icon - Temp - Fill
+Text=<AI=CPU temperature,0,0,0,100,512,768,32,64,40,16,0,0,0>
+PositionX=-9
+PositionY=-13
+ExtentX=15
+ExtentY=30
+ExtentOrigin=0
+FixedAlignment=1
+Size=50
+TextColor=F0FF
+[Layer44]
+Name=CPU - Icon - Speed Gauge 1 - Body
+Text=<I=0,0,576,320,64,64>
+PositionX=-9
+PositionY=-14
+ExtentX=30
+ExtentY=30
+ExtentOrigin=0
+Size=10
+TextColor=3A00F0FF
+[Layer45]
+Name=CPU - Icon - Speed Gauge 1 - Needle
+Text=<AI=CPU clock,0,0,0,6,768,512,64,64,1,1,0,-112,112>
+PositionX=-9
+PositionY=-14
+ExtentX=30
+ExtentY=30
+ExtentOrigin=4
+Size=50
+TextColor=F0FF
+[Layer46]
+Name=CPU - Icon - Speed Gauge 1 - Fill
+Text=<AI=CPU clock,0,0,0,6,512,0,64,64,41,8,0,0,0>
+PositionX=-9
+PositionY=-14
+ExtentX=30
+ExtentY=30
+ExtentOrigin=4
+Size=50
+TextColor=F0FF
+[Layer47]
+Name=CPU - Sensor - CPU Name
+Text=%CPU%
+PositionX=-4
+PositionY=-9
+ExtentX=209
+ExtentY=24
+ExtentOrigin=4
+FixedAlignment=1
+Size=135
+TextColor=F0FF
+MarginLeft=10
+MarginTop=4
+[Layer48]
+Name=CPU - Text - CPU
+Text=CPU
+PositionX=-12
+PositionY=-11
+ExtentX=112
+ExtentY=25
+ExtentOrigin=3
+FixedAlignment=1
+Size=106
+TextColor=F0FF
+MarginTop=4
+[Layer49]
+Name=CPU - Sensor - Usage (%)
+Text=%CPU usage%<S=40> <S=-100>%<S>
+PositionX=-15
+PositionY=-11
+ExtentX=73
+ExtentY=40
+ExtentOrigin=4
+FixedAlignment=1
+Size=106
+TextColor=F0FF
+MarginTop=4
+MarginRight=1
+[Layer50]
+Name=CPU - Sensor - Power (W)
+Text=%CPU power% W
+PositionX=-12
+PositionY=-12
+ExtentX=112
+ExtentY=40
+ExtentOrigin=3
+Size=106
+TextColor=F0FF
+RefreshPeriod=1000
+MarginTop=4
+[Layer51]
+Name=CPU - Sensor - Temp (°C)
+Text=%CPU temperature% <S=142>°<S=106> C<S>
+PositionX=-12
+PositionY=-13
+ExtentX=112
+ExtentY=53
+ExtentOrigin=3
+Size=106
+TextColor=F0FF
+MarginBottom=1
+[Layer52]
+Name=CPU - Sensor - Clock (GHz)
+Text=%CPU clock%  <S=-80>GHZ<S>
+PositionX=-12
+PositionY=-14
+ExtentX=112
+ExtentY=40
+ExtentOrigin=3
+FixedAlignment=1
+Size=106
+TextColor=F0FF
+RefreshPeriod=500
+MarginTop=4
+[Layer53]
+Name=3-Fan GPU - Other
+Text=<I=0,0,256,898,256,128>
+PositionX=230
+PositionY=1
+ExtentX=128
+ExtentY=64
+ExtentOrigin=0
+Size=10
+TextColor=6700F0FF
+[Layer54]
+Name=3-Fan GPU - Fan 1
+Text=<AI=Animation Timer 5,0,0,0,10,320,1152,64,64,10,5,0,0,0>
+PositionX=244
+PositionY=16
+ExtentX=32
+ExtentY=32
+ExtentOrigin=0
+Size=10
+TextColor=E700F0FF
+RefreshPeriod=16
+[Layer55]
+Name=3-Fan GPU - Fan 2
+Text=<AI=Animation Timer 1,0,0,0,10,512,640,64,64,10,5,0,0,0>
+PositionX=279
+PositionY=16
+ExtentX=32
+ExtentY=32
+ExtentOrigin=0
+Size=10
+TextColor=E700F0FF
+RefreshPeriod=16
+[Layer56]
+Name=3-Fan GPU - Fan 3
+Text=<AI=Animation Timer 5,0,0,0,10,320,1152,64,64,10,5,0,0,0>
+PositionX=314
+PositionY=16
+ExtentX=32
+ExtentY=32
+ExtentOrigin=0
+Size=10
+TextColor=E700F0FF
+RefreshPeriod=16
+[Layer57]
+Name=3-Fan GPU - Fan Rings
+Text=<I=0,0,0,898,256,128>
+PositionX=231
+PositionY=1
+ExtentX=128
+ExtentY=64
+ExtentOrigin=0
+Size=10
+TextColor=9B00F0FF
+[Layer58]
+Name=3-Fan GPU - Fan Centers
+Text=<I=0,0,128,322,128,32>
+PositionX=231
+PositionY=18
+ExtentX=128
+ExtentY=32
+ExtentOrigin=0
+Size=10
+TextColor=B100F0FF
+[Layer59]
+Name=3-Fan GPU - GPU Body Fill
+Text=<I=0,0,0,642,256,128>
+PositionX=231
+PositionY=1
+ExtentX=128
+ExtentY=64
+ExtentOrigin=0
+Size=10
+TextColor=4100F0FF
+[Layer60]
+Name=3-Fan GPU - GPU Body
+Text=<I=0,0,0,770,256,128>
+PositionX=231
+PositionY=1
+ExtentX=128
+ExtentY=64
+ExtentOrigin=0
+Size=10
+TextColor=F0FF
+[Layer61]
+Name=CPU - Barchart Info Message
+VisibilitySource=ShowCpuBarchartInfoMessage
+Text=" HWiNFO not running: Start HWiNFO \n   or  set CPU Core Count Override."
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=55
+ExtentOrigin=4
+Size=52
+TextColor=F0FF
+[Layer62]
+Name=CPU - 4-Core Barchart Bg
+VisibilitySource=Is4CoreLayout
+Text=<G=Barchart Bg,15,45,2,0,1,28>         <G=Barchart Bg>         <G=Barchart Bg>         <G=Barchart Bg>
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=59
+ExtentOrigin=4
+Size=55
+TextColor=2700F0FF
+[Layer63]
+Name=CPU - 4-Core CPU Barchart
+VisibilitySource=Is4CoreLayout
+Text=<G=CPU1 usage,15,45,2,0,100,28>         <G=CPU3 usage>         <G=CPU5 usage>         <G=CPU7 usage>
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=59
+ExtentOrigin=4
+Size=55
+TextColor=F0FF,,95,F0FF,95,99,60F7FF,99,(Framerate,1)
+[Layer64]
+Name=CPU - 6-Core Barchart Bg
+VisibilitySource=Is6CoreLayout
+Text=<G=Barchart Bg,15,45,2,0,1,28>     <G=Barchart Bg>     <G=Barchart Bg>     <G=Barchart Bg>     <G=Barchart Bg>     <G=Barchart Bg>
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=59
+ExtentOrigin=4
+FixedAlignment=1
+Size=55
+TextColor=2700F0FF
+[Layer65]
+Name=CPU - 6-Core CPU Barchart
+VisibilitySource=Is6CoreLayout
+Text=<G=CPU1 usage,15,45,2,0,100,28>     <G=CPU3 usage>     <G=CPU5 usage>     <G=CPU7 usage>     <G=CPU9 usage>     <G=CPU11 usage>
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=59
+ExtentOrigin=4
+Size=55
+TextColor=F0FF,,95,F0FF,95,99,60F7FF,99,(Framerate,1)
+[Layer66]
+Name=CPU - 8-Core Barchart Bg
+VisibilitySource=Is8CoreLayout
+Text=<G=Barchart Bg,15,45,2,0,1,28>   <G=Barchart Bg>   <G=Barchart Bg>   <G=Barchart Bg>   <G=Barchart Bg>   <G=Barchart Bg>   <G=Barchart Bg>   <G=Barchart Bg>
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=59
+ExtentOrigin=4
+Size=55
+TextColor=2700F0FF
+[Layer67]
+Name=CPU - 8-Core CPU Barchart
+VisibilitySource=Is8CoreLayout
+Text=<G=CPU1 usage,15,45,2,0,100,28>   <G=CPU3 usage>   <G=CPU5 usage>   <G=CPU7 usage>   <G=CPU9 usage>   <G=CPU11 usage>   <G=CPU13 usage>   <G=CPU15 usage>
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=59
+ExtentOrigin=4
+Size=55
+TextColor=F0FF,,95,F0FF,95,99,60F7FF,99,(Framerate,1)
+[Layer68]
+Name=CPU - 10-Core Barchart Bg
+VisibilitySource=Is10CoreLayout
+Text=<G=Barchart Bg,12,45,2,0,1,28>  <G=Barchart Bg>  <G=Barchart Bg>  <G=Barchart Bg>  <G=Barchart Bg>  <G=Barchart Bg>  <G=Barchart Bg>  <G=Barchart Bg>  <G=Barchart Bg>  <G=Barchart Bg>
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=59
+ExtentOrigin=4
+Size=60
+TextColor=2700F0FF
+[Layer69]
+Name=CPU - 10-Core CPU Barchart
+VisibilitySource=Is10CoreLayout
+Text=<G=CPU1 usage,12,45,2,0,100,28>  <G=CPU3 usage>  <G=CPU5 usage>  <G=CPU7 usage>  <G=CPU9 usage>  <G=CPU11 usage>  <G=CPU13 usage>  <G=CPU15 usage>  <G=CPU17 usage>  <G=CPU19 usage>
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=59
+ExtentOrigin=4
+Size=60
+TextColor=F0FF,,95,F0FF,95,99,60F7FF,99,(Framerate,1)
+[Layer70]
+Name=CPU - 12-Core Barchart Bg
+VisibilitySource=Is12CoreLayout
+Text=<G=Framerate,7,45,0,0,1,28><S=30>    <S=24> <G=Barchart BG><S=30>    <S=24> <G=Barchart BG><S=30>    <S=24> <G=Barchart BG><S=30>    <S=24> <G=Barchart BG><S=30>    <S=24> <G=Barchart BG><S=30>    <S=24> <G=Barchart BG><S=30>    <S=24> <G=Barchart BG><S=30>    <S=24> <G=Barchart BG><S=30>    <S=24> <G=Barchart BG><S=30>    <S=24> <G=Barchart BG><S=30>    <S=24> <G=Barchart BG><S>
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=59
+ExtentOrigin=4
+Size=24
+TextColor=2700F0FF
+[Layer71]
+Name=CPU - 12-Core CPU Barchart
+VisibilitySource=Is12CoreLayout
+Text=<IF IsIntelCpu><G=CPU1 usage,7,45,0,0,100,28><S=30>    <S=24> <G=CPU3 usage><S=30>    <S=24> <G=CPU5 usage><S=30>    <S=24> <G=CPU7 usage><S=30>    <S=24> <G=CPU9 usage><S=30>    <S=24> <G=CPU10 usage><S=30>    <S=24> <G=CPU11 usage><S=30>    <S=24> <G=CPU12 usage><S=30>    <S=24> <G=CPU13 usage><S=30>    <S=24> <G=CPU14 usage><S=30>    <S=24> <G=CPU15 usage><S=30>    <S=24> <G=CPU16 usage><S><ELSE><G=CPU1 usage,7,45,0,0,100,28><S=30>    <S=24> <G=CPU3 usage><S=30>    <S=24> <G=CPU5 usage><S=30>    <S=24> <G=CPU7 usage><S=30>    <S=24> <G=CPU9 usage><S=30>    <S=24> <G=CPU11 usage><S=30>    <S=24> <G=CPU13 usage><S=30>    <S=24> <G=CPU15 usage><S=30>    <S=24> <G=CPU17 usage><S=30>    <S=24> <G=CPU19 usage><S=30>    <S=24> <G=CPU21 usage><S=30>    <S=24> <G=CPU23 usage><IF><S>
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=59
+ExtentOrigin=4
+Size=24
+TextColor=F0FF,,95,F0FF,95,99,60F7FF,99,(Framerate,1)
+[Layer72]
+Name=CPU - 14-Core Barchart Bg
+VisibilitySource=Is14CoreLayout
+Text=<G=Framerate,7,45,0,0,1,28>       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG"><S>
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=59
+ExtentOrigin=4
+Size=24
+TextColor=2700F0FF
+[Layer73]
+Name=CPU - 14-Core CPU Barchart
+VisibilitySource=Is14CoreLayout
+Text=<G=CPU1 usage,7,45,0,0,100,28>       <G=CPU3 usage>       <G=CPU5 usage>       <G=CPU7 usage>       <G=CPU9 usage>       <G=CPU11 usage>       <G=CPU13 usage>       <G=CPU14 usage>       <G=CPU15 usage>       <G=CPU16 usage>       <G=CPU17 usage>       <G=CPU18 usage>       <G=CPU19 usage>       <G=CPU20 usage><S>
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=59
+ExtentOrigin=4
+Size=24
+TextColor=F0FF,,95,F0FF,95,99,60F7FF,99,(Framerate,1)
+[Layer74]
+Name=CPU - 16-Core Barchart Bg
+VisibilitySource=Is16CoreLayout
+Text=<G=Framerate,5,45,0,0,1,28>       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG">       <G="Barchart BG"><S>
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=59
+ExtentOrigin=4
+Size=24
+TextColor=2700F0FF
+[Layer75]
+Name=CPU - 16-Core CPU Barchart
+VisibilitySource=Is16CoreLayout
+Text=<IF IsAMDCpu><G=CPU1 usage,5,45,0,0,100,28>       <G=CPU3 usage>       <G=CPU5 usage>       <G=CPU7 usage>       <G=CPU9 usage>       <G=CPU11 usage>       <G=CPU13 usage>       <G=CPU15 usage>       <G=CPU17 usage>       <G=CPU19 usage>       <G=CPU21 usage>       <G=CPU23 usage>       <G=CPU25 usage>       <G=CPU27 usage>       <G=CPU29 usage>       <G=CPU31 usage><S><ELSE><G=CPU1 usage,5,45,0,0,100,28>       <G=CPU3 usage>       <G=CPU5 usage>       <G=CPU7 usage>       <G=CPU9 usage>       <G=CPU11 usage>       <G=CPU13 usage>       <G=CPU15 usage>       <G=CPU17 usage>       <G=CPU18 usage>       <G=CPU19 usage>       <G=CPU20 usage>       <G=CPU21 usage>       <G=CPU22 usage>       <G=CPU23 usage>       <G=CPU24 usage><IF><S>
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=59
+ExtentOrigin=4
+Size=24
+TextColor=F0FF,,95,F0FF,95,99,60F7FF,99,(Framerate,1)
+[Layer76]
+Name=CPU - 20-Core Barchart Bg
+VisibilitySource=Is20CoreLayout
+Text=<G=Framerate,5,45,0,0,1,28><S=15>   <S=30> <G="Barchart BG"><S=15>   <S=30> <G="Barchart BG"><S=15>   <S=30> <G="Barchart BG"><S=15>   <S=30> <G="Barchart BG"><S=15>   <S=30> <G="Barchart BG"><S=15>   <S=30> <G="Barchart BG"><S=15>   <S=30> <G="Barchart BG"><S=15>   <S=30> <G="Barchart BG"><S=15>   <S=30> <G="Barchart BG"><S=15>   <S=30> <G="Barchart BG"><S=15>   <S=30> <G="Barchart BG"><S=15>   <S=30> <G="Barchart BG"><S=15>   <S=30> <G="Barchart BG"><S=15>   <S=30> <G="Barchart BG"><S=15>   <S=30> <G="Barchart BG"><S=15>   <S=30> <G="Barchart BG"><S=15>   <S=30> <G="Barchart BG"><S=15>   <S=30> <G="Barchart BG"><S=15>   <S=30> <G="Barchart BG">
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=59
+ExtentOrigin=4
+Size=30
+TextColor=2700F0FF
+[Layer77]
+Name=CPU - 20-Core CPU Barchart
+VisibilitySource=Is20CoreLayout
+Text=<IF IsIntelCpu><G=CPU1 usage,5,45,0,0,100,28><S=15>   <S=30> <G=CPU3 usage><S=15>   <S=30> <G=CPU5 usage><S=15>   <S=30> <G=CPU7 usage><S=15>   <S=30> <G=CPU9 usage><S=15>   <S=30> <G=CPU11 usage><S=15>   <S=30> <G=CPU13 usage><S=15>   <S=30> <G=CPU15 usage><S=15>   <S=30> <G=CPU17 usage><S=15>   <S=30> <G=CPU18 usage><S=15>   <S=30> <G=CPU19 usage><S=15>   <S=30> <G=CPU20 usage><S=15>   <S=30> <G=CPU21 usage><S=15>   <S=30> <G=CPU22 usage><S=15>   <S=30> <G=CPU23 usage><S=15>   <S=30> <G=CPU24 usage><S=15>   <S=30> <G=CPU25 usage><S=15>   <S=30> <G=CPU26 usage><S=15>   <S=30> <G=CPU27 usage><S=15>   <S=30> <G=CPU28 usage><S><ELSE><G=CPU1 usage,5,45,0,0,100,28><S=15>   <S=30> <G=CPU3 usage><S=15>   <S=30> <G=CPU5 usage><S=15>   <S=30> <G=CPU7 usage><S=15>   <S=30> <G=CPU9 usage><S=15>   <S=30> <G=CPU11 usage><S=15>   <S=30> <G=CPU13 usage><S=15>   <S=30> <G=CPU15 usage><S=15>   <S=30> <G=CPU17 usage><S=15>   <S=30> <G=CPU19 usage><S=15>   <S=30> <G=CPU21 usage><S=15>   <S=30> <G=CPU23 usage><S=15>   <S=30> <G=CPU25 usage><S=15>   <S=30> <G=CPU27 usage><S=15>   <S=30> <G=CPU29 usage><S=15>   <S=30> <G=CPU31 usage><S=15>   <S=30> <G=CPU33 usage><S=15>   <S=30> <G=CPU35 usage><S=15>   <S=30> <G=CPU37 usage><S=15>   <S=30> <G=CPU39 usage><IF><S>
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=59
+ExtentOrigin=4
+Size=30
+TextColor=F0FF,,95,F0FF,95,99,60F7FF,99,(Framerate,1)
+[Layer78]
+Name=CPU - 24-Core Barchart Bg
+VisibilitySource=Is24CoreLayout
+Text=<G=Framerate,3,45,0,0,1,28><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S=10>     <S=30><G="Barchart BG"><S>
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=59
+ExtentOrigin=4
+Size=30
+TextColor=2700F0FF
+[Layer79]
+Name=CPU - 24-Core CPU Barchart
+VisibilitySource=Is24CoreLayout
+Text=<IF IsIntelCpu><G=CPU1 usage,3,45,0,0,100,28><S=10>     <S=30><G=CPU3 usage><S=10>     <S=30><G=CPU5 usage><S=10>     <S=30><G=CPU7 usage><S=10>     <S=30><G=CPU9 usage><S=10>     <S=30><G=CPU11 usage><S=10>     <S=30><G=CPU13 usage><S=10>     <S=30><G=CPU15 usage><S=10>     <S=30><G=CPU17 usage><S=10>     <S=30><G=CPU18 usage><S=10>     <S=30><G=CPU19 usage><S=10>     <S=30><G=CPU20 usage><S=10>     <S=30><G=CPU21 usage><S=10>     <S=30><G=CPU22 usage><S=10>     <S=30><G=CPU23 usage><S=10>     <S=30><G=CPU24 usage><S=10>     <S=30><G=CPU25 usage><S=10>     <S=30><G=CPU26 usage><S=10>     <S=30><G=CPU27 usage><S=10>     <S=30><G=CPU28 usage><S=10>     <S=30><G=CPU29 usage><S=10>     <S=30><G=CPU30 usage><S=10>     <S=30><G=CPU31 usage><S=10>     <S=30><G=CPU32 usage><S><ELSE><G=CPU1 usage,3,45,0,0,100,28><S=10>     <S=30><G=CPU3 usage><S=10>     <S=30><G=CPU5 usage><S=10>     <S=30><G=CPU7 usage><S=10>     <S=30><G=CPU9 usage><S=10>     <S=30><G=CPU11 usage><S=10>     <S=30><G=CPU13 usage><S=10>     <S=30><G=CPU15 usage><S=10>     <S=30><G=CPU17 usage><S=10>     <S=30><G=CPU19 usage><S=10>     <S=30><G=CPU21 usage><S=10>     <S=30><G=CPU23 usage><S=10>     <S=30><G=CPU25 usage><S=10>     <S=30><G=CPU27 usage><S=10>     <S=30><G=CPU29 usage><S=10>     <S=30><G=CPU31 usage><S=10>     <S=30><G=CPU33 usage><S=10>     <S=30><G=CPU35 usage><S=10>     <S=30><G=CPU37 usage><S=10>     <S=30><G=CPU39 usage><S=10>     <S=30><G=CPU41 usage><S=10>     <S=30><G=CPU43 usage><S=10>     <S=30><G=CPU45 usage><S=10>     <S=30><G=CPU47 usage><IF><S>
+PositionX=-7
+PositionY=-15
+ExtentX=209
+ExtentY=59
+ExtentOrigin=4
+Size=40
+TextColor=F0FF,,95,F0FF,95,99,60F7FF,99,(Framerate,1)
+[Layer80]
+Name=
+VisibilitySource=GPU1 memory usage \ process
+Text=VRAM  %GPU1 memory usage \ process% MB
+PositionX=-17
+PositionY=-6
+ExtentX=0
+ExtentY=0
+ExtentOrigin=0
+FixedAlignment=1
+TextColor=F0FF
